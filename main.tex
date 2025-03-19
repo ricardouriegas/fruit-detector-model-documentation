@@ -84,11 +84,21 @@ La mayor parte de estos conocimientos los hemos aprendido en unidades previas de
 
 \subsection{Dataset}
 Antes de todo debemos definir que es un dataset y porque es que lo ocupamos en este trabajo.
-Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue la union de 2 datasets.
+Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue completamente recolectado por nosotros mismos, el cual consiste en imagenes de frutos pequeños en diferentes entornos; el dataset se compone de 1 sola clase, la cual es la de frutos. La cantidad de imagenes recolectada fue de 38 imagenes, pero realizando aumentacion de datos se logro aumentar a 114 imagenes guardadas en roboflow\cite{} para su uso en el entrenamiento del modelo.
 
+Las técnicas de augmentation que se aplicaron a los datos fueron las siguientes:
 \begin{itemize}
-    \item El primer dataset fue recolectado del universo de dataset en roboflow.com\cite{}
-    \item El segundo dataset fue recolectado por el mismo equipo del trabajo.
+    \item Flip: Horizontal, Vertical
+    \item Rotación 90°: En sentido horario, antihorario, al revés
+    \item Crop: 0\% mínimo, 20\% máximo
+    \item Rotación: Entre -15° y +15°
+    \item Shear: ±10° Horizontal, ±10° Vertical
+    \item Hue: Entre -15° y +15°
+    \item Saturación: Entre -25\% y +25\%
+    \item Brillo: Entre -15\% y +15\%
+    \item Exposición: Entre -10\% y +10\%
+    \item Blur: Hasta 2.5px
+    \item Ruido: Hasta 0.1\% de píxeles
 \end{itemize}
 
 \subsection{Modelo de Machine Learning}
