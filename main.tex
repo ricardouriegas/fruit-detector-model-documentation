@@ -118,6 +118,8 @@ Para el entrenamiento se realiza lo siguiente:
 \subsection{Uso del Modelo}
 Para usar el modelo en el código se agrego un archivo (UI.py) que haciendo uso de una interfaz gráfica en Qt6, carga el modelo entrenado y realiza la detección de los frutos en tiempo real mediante la cámara de la computadora.
 
+Este codigo principalmente busca el modelo best1.onnx, debido a que en un principio se buscaba entrenar y guardar el modelo en este formato, pero sin embargo al final se opto por guardar el modelo en formato .pt debido a que se tenia problemas al cargar el modelo en formato onnxn en la interfaz gráfica en una de las computadoras.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resultados}
 
