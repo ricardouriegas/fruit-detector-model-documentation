@@ -1,0 +1,122 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % Caracteres en Español (Acentos, ñs)
+\usepackage{url} % ACENTOS
+\usepackage{hyperref} % Referencias
+\usepackage{subfig}
+\usepackage{lipsum}
+\usepackage{balance} 
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\frontmatter@RRAP@format}{(}{}{}{}
+\patchcmd{\frontmatter@RRAP@format}{)}{}{}{}
+\makeatother	
+
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\addbibresource{references.bib}
+
+% fecha
+\usepackage{datetime}
+\newdateformat{specialdate}{
+    \twodigit{\THEDAY}-\twodigit{\THEMONTH}-\THEYEAR
+}
+\date{\specialdate\today}
+
+% la sentencia \burl en las citas... 
+\usepackage[hyphenbreaks]{breakurl}
+\renewcommand\spanishtablename{Tabla}
+\renewcommand\spanishfigurename{Figura}
+
+
+\begin{document}
+% Definitions
+\newcommand{\breite}{0.9} %  for twocolumn
+\newcommand{\RelacionFiguradoscolumnas}{0.9}
+\newcommand{\RelacionFiguradoscolumnasPuntoCinco}{0.45}
+
+%Title of paper
+\title{Reporte de Laboratorio 2 \\ Conteo de Frutos Pequeños en Tiempo Real Utilizando una Plataforma Giratoria}
+
+% Trabajo Individual
+\author{
+    \IEEEauthorblockN{
+        Ricardo Emmanuel Uriegas Ibarra\IEEEauthorrefmark{1}
+        }
+    % En caso de trabajos en equipo, poner a todos los autores 
+    % en estricto ORDEN ALFABETICO
+    %\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+    %Homer Simpson\IEEEauthorrefmark{1}}
+    \IEEEauthorblockA{
+        \IEEEauthorrefmark{1}Ingeniería en Tecnologías de la Información\\
+        Universidad Politécnica de Victoria
+    }
+}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract} 
+    
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introducción}
+La disponibilidad de metodologías prácticas y fiables de detección de frutos en campo resulta fundamental para realizar previsiones precisas de la cosecha\cite{}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Desarrollo Experimental}
+En este trabajo se presenta un sistema de deteccion en tiempo real de frutos pequeños que giran en una plataforma giratoria.
+
+Para lograr esto se necesita conocimiento en las siguientes áreas:
+\begin{itemize}
+    \item Procesamiento de Imágenes
+    \item Visión por Computadora
+    \item Redes Neuronales
+\end{itemize}
+
+La mayor parte de estos conocimientos los hemos aprendido en unidades previas de la materia, por lo que no se abordarán en este reporte.
+
+\subsection{Dataset}
+Antes de todo debemos definir que es un dataset y porque es que lo ocupamos en este trabajo.
+Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue la union de 2 datasets.
+
+\begin{itemize}
+    \item El primer dataset fue recolectado del universo de dataset en roboflow.com\cite{}
+    \item El segundo dataset fue recolectado por el mismo equipo del trabajo.
+\end{itemize}
+
+\subsection{Modelo de Machine Learning}
+Debido a la baja cantidad de imagenes para entrenamiento que poseiamos, sumado a la eficiencia que debia de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo de la libreria ultralytics\cite{} conocido como yolov8n\cite{}.
+
+\subsection{Entrenamiento}
+Una vez ya se tenia la seleccion del modelo pre-entrenado a usar, prosiguio con el entrenamiento del modelo con el dataset recolectado.
+
+Para el entrenamiento se realiza lo siguiente:
+\begin{itemize}
+    \item Se divide el dataset en 3 partes, una para entrenamiento, otra para validacion y otra para pruebas (80\% para entrenamiento, 10\% para validacion y 10\% para pruebas).
+    \item Se realiza el entrenamiento del modelo.
+    \item Despues se realiza la validacion del modelo.
+    \item Y por ultimo; haciendo uso de la seccion del dataset para pruebas, se realiza la prueba a cada epoca modelo y al final se escoge el mejor modelo.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resultados}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusión}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{calcularRangos}
+\addcontentsline{toc}{section}{Referencias} 
+\printbibliography
+%\balance
+
+\end{document}
