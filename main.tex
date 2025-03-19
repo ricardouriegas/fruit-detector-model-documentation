@@ -71,7 +71,7 @@ La disponibilidad de metodologías prácticas y fiables de detección de frutos 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Desarrollo Experimental}
-En este trabajo se presenta un sistema de deteccion en tiempo real de frutos pequeños que giran en una plataforma giratoria.
+En este trabajo se presenta un sistema de detección en tiempo real de frutos pequeños que giran en una plataforma giratoria.
 
 Para lograr esto se necesita conocimiento en las siguientes áreas:
 \begin{itemize}
@@ -84,7 +84,7 @@ La mayor parte de estos conocimientos los hemos aprendido en unidades previas de
 
 \subsection{Dataset}
 Antes de todo debemos definir que es un dataset y porque es que lo ocupamos en este trabajo.
-Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue completamente recolectado por nosotros mismos\cite{}, el cual consiste en imagenes de frutos pequeños en diferentes entornos; el dataset se compone de 1 sola clase, la cual es la de frutos. La cantidad de imagenes recolectada fue de 38 imagenes, pero realizando aumentacion de datos se logro aumentar a 114 imagenes guardadas en roboflow\cite{} para su uso en el entrenamiento del modelo.
+Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue completamente recolectado por nosotros mismos\cite{}, el cual consiste en imágenes de frutos pequeños en diferentes entornos; el dataset se compone de 1 sola clase, la cual es la de frutos. La cantidad de imágenes recolectada fue de 38 imágenes, pero realizando aumentacion de datos se logro aumentar a 114 imágenes guardadas en roboflow\cite{} para su uso en el entrenamiento del modelo.
 
 Las técnicas de augmentation que se aplicaron a los datos fueron las siguientes:
 \begin{itemize}
@@ -102,24 +102,25 @@ Las técnicas de augmentation que se aplicaron a los datos fueron las siguientes
 \end{itemize}
 
 \subsection{Modelo}
-Debido a la baja cantidad de imagenes para entrenamiento que poseiamos, sumado a la eficiencia que debia de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo pre-entreando de la libreria ultralytics\cite{} yolov8n\cite{}.
+Debido a la baja cantidad de imágenes para entrenamiento que poseíamos, sumado a la eficiencia que debía de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo pre-entrenando para detección de objetos de la librería ultralytics\cite{} yolov8n\cite{}.
 
 \subsection{Entrenamiento}
-Una vez ya se tenia la seleccion del modelo pre-entrenado a usar, prosiguio con el entrenamiento del modelo con el dataset mencionado anteriormente\cite{}.
+Una vez ya se tenia la selección del modelo pre-entrenado a usar, se prosiguió con el entrenamiento del modelo dado el dataset mencionado anteriormente\cite{}.
 
 Para el entrenamiento se realiza lo siguiente:
 \begin{itemize}
-    \item Se divide el dataset en 3 partes, una para entrenamiento, otra para validacion y otra para pruebas (80\% para entrenamiento, 10\% para validacion y 10\% para pruebas).
+    \item Se divide el dataset en 3 partes, una para entrenamiento, otra para validación y otra para pruebas (80\% para entrenamiento, 10\% para validación y 10\% para pruebas).
     \item Se realiza el entrenamiento del modelo.
-    \item Despues se realiza la validacion del modelo.
-    \item Y por ultimo; haciendo uso de la seccion del dataset para pruebas, se realiza la prueba a cada epoca modelo y al final se escoge el mejor modelo.
+    \item Después se realiza la validación del modelo.
+    \item Y por ultimo; haciendo uso de la sección del dataset para pruebas, se realiza la prueba a cada época modelo y al final se escoge el mejor modelo.
 \end{itemize}
 
 \subsection{Uso del Modelo}
-Para usar el modelo en el codigo se agrego un archivo (UI.py) que haciendo uso de una interfaz grafica en Qt6, carga el modelo entrenado y realiza la deteccion de los frutos en tiempo real mediante la camara de la computadora.
+Para usar el modelo en el código se agrego un archivo (UI.py) que haciendo uso de una interfaz gráfica en Qt6, carga el modelo entrenado y realiza la detección de los frutos en tiempo real mediante la cámara de la computadora.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resultados}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
