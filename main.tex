@@ -84,7 +84,7 @@ La mayor parte de estos conocimientos los hemos aprendido en unidades previas de
 
 \subsection{Dataset}
 Antes de todo debemos definir que es un dataset y porque es que lo ocupamos en este trabajo.
-Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue completamente recolectado por nosotros mismos, el cual consiste en imagenes de frutos pequeños en diferentes entornos; el dataset se compone de 1 sola clase, la cual es la de frutos. La cantidad de imagenes recolectada fue de 38 imagenes, pero realizando aumentacion de datos se logro aumentar a 114 imagenes guardadas en roboflow\cite{} para su uso en el entrenamiento del modelo.
+Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue completamente recolectado por nosotros mismos\cite{}, el cual consiste en imagenes de frutos pequeños en diferentes entornos; el dataset se compone de 1 sola clase, la cual es la de frutos. La cantidad de imagenes recolectada fue de 38 imagenes, pero realizando aumentacion de datos se logro aumentar a 114 imagenes guardadas en roboflow\cite{} para su uso en el entrenamiento del modelo.
 
 Las técnicas de augmentation que se aplicaron a los datos fueron las siguientes:
 \begin{itemize}
@@ -101,11 +101,11 @@ Las técnicas de augmentation que se aplicaron a los datos fueron las siguientes
     \item Ruido: Hasta 0.1\% de píxeles
 \end{itemize}
 
-\subsection{Modelo de Machine Learning}
-Debido a la baja cantidad de imagenes para entrenamiento que poseiamos, sumado a la eficiencia que debia de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo de la libreria ultralytics\cite{} conocido como yolov8n\cite{}.
+\subsection{Modelo}
+Debido a la baja cantidad de imagenes para entrenamiento que poseiamos, sumado a la eficiencia que debia de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo pre-entreando de la libreria ultralytics\cite{} yolov8n\cite{}.
 
 \subsection{Entrenamiento}
-Una vez ya se tenia la seleccion del modelo pre-entrenado a usar, prosiguio con el entrenamiento del modelo con el dataset recolectado.
+Una vez ya se tenia la seleccion del modelo pre-entrenado a usar, prosiguio con el entrenamiento del modelo con el dataset mencionado anteriormente\cite{}.
 
 Para el entrenamiento se realiza lo siguiente:
 \begin{itemize}
