@@ -3,7 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{graphicx}
-\usepackage[utf8]{inputenc} % Caracteres en Español (Acentos, ñs)
+\usepackage[utf8]{inputenc} % Caracteres en español (acentos, ñ)
 \usepackage{url} % ACENTOS
 \usepackage{hyperref} % Referencias
 \usepackage{subfig}
@@ -43,14 +43,21 @@
 \title{Reporte de Laboratorio 2 \\ Conteo de Frutos Pequeños en Tiempo Real Utilizando una Plataforma Giratoria}
 
 % Trabajo Individual
-\author{
-    \IEEEauthorblockN{
-        Ricardo Emmanuel Uriegas Ibarra\IEEEauthorrefmark{1}
-        }
+% \author{
+    % \IEEEauthorblockN{
+        % Ricardo Emmanuel Uriegas Ibarra\IEEEauthorrefmark{1}
+        % }
     % En caso de trabajos en equipo, poner a todos los autores 
     % en estricto ORDEN ALFABETICO
-    %\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
-    %Homer Simpson\IEEEauthorrefmark{1}}
+\author{
+    \IEEEauthorblockN{
+        Miguel Angel Hernandez Ramirez\IEEEauthorrefmark{1},
+        Alexis Guadalupe Medina Ayala\IEEEauthorrefmark{1}
+        Juan Ricardo Soriano Roel\IEEEauthorrefmark{1},\\
+        Aris Uriel Torres Desilos\IEEEauthorrefmark{1},
+        Ricardo Emmanuel Uriegas Ibarra\IEEEauthorrefmark{1}
+    }
+
     \IEEEauthorblockA{
         \IEEEauthorrefmark{1}Ingeniería en Tecnologías de la Información\\
         Universidad Politécnica de Victoria
@@ -66,7 +73,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introducción}
-La disponibilidad de metodologías prácticas y fiables de detección de frutos en campo resulta fundamental para realizar previsiones precisas de la cosecha\cite{}. 
+La disponibilidad de metodologías prácticas y fiables de detección de frutos en campo resulta fundamental para realizar previsiones precisas de la cosecha\cite{deteccionFrutosGRAP}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,8 +90,8 @@ Para lograr esto se necesita conocimiento en las siguientes áreas:
 La mayor parte de estos conocimientos los hemos aprendido en unidades previas de la materia, por lo que no se abordarán en este reporte.
 
 \subsection{Dataset}
-Antes de todo debemos definir que es un dataset y porque es que lo ocupamos en este trabajo.
-Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue totalmente recolectado por nosotros mismos; de algunos frutos variados,\cite{} el cual consiste en imágenes de frutos chicos en diferentes entornos; esto porque se creia que el proyecto debia abarcar todo tipo de frutos. El dataset se componen de 1 sola clase, la cual es la de fruto. La cantidad de imágenes recolectada fue de 38 imágenes, pero realizando aumentacion de datos se logro llegar a 114 imágenes recolectadas por el equipo.
+Antes de todo debemos definir qué es un dataset y por qué lo ocupamos en este trabajo.
+Un dataset es un conjunto de datos que se utilizan para entrenar un modelo de machine learning. En este caso, el dataset que se utilizó fue totalmente recolectado por nosotros mismos; de algunos frutos variados,\cite{roboflowLittleFruit} el cual consiste en imágenes de frutos chicos en diferentes entornos; esto porque se creía que el proyecto debía abarcar todo tipo de frutos. El dataset se compone de 1 sola clase, la cual es la de fruto. La cantidad de imágenes recolectada fue de 38 imágenes, pero realizando aumentación de datos se logró llegar a 114 imágenes recolectadas por el equipo.
 
 Las técnicas de augmentation que se aplicaron a los datos recolectados fueron los siguientes:
 \begin{itemize}
@@ -102,22 +109,22 @@ Las técnicas de augmentation que se aplicaron a los datos recolectados fueron l
 \end{itemize}
 
 \subsection{Modelo}
-Debido a la baja cantidad de imágenes para entrenamiento que poseíamos, sumado a la eficiencia que debía de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo pre-entrenando para detección de objetos de la librería ultralytics\cite{} yolov8n\cite{}.
+Debido a la baja cantidad de imágenes para entrenamiento que poseíamos, sumado a la eficiencia que debía de poseer el modelo para ser ejecutado en tiempo real, se opto por usar el modelo pre-entrenando para detección de objetos de la librería ultralytics\cite{ultralyticsPackage} yolov8n\cite{ultralyticsYOLOv8}.
 
 \subsection{Entrenamiento}
-Una vez ya se tenia la selección del modelo pre-entrenado a usar, se prosiguió con el entrenamiento del modelo dado los dataset mencionados anteriormente\cite{}.
+Una vez ya se tenía la selección del modelo preentrenado a usar, se prosiguió con el entrenamiento del modelo dado el dataset mencionado anteriormente\cite{roboflowLittleFruit}.
 
-Antes del entrenamiento se dividio el dataset en 3 partes:
+Antes del entrenamiento se dividió el dataset en 3 partes:
 \begin{itemize}
     \item 80\% para entrenamiento
     \item 10\% para validación
     \item 10\% para pruebas
 \end{itemize}
 
-Posteriormente se descargo el modelo yolov8n\cite{} y para el entrenamiento se realizaron 40 epocas con un tamaño de imagen de 640x640, todo lo demas se dejo en los valores por defecto del modelo (realmente se intento con diferentes combinaciones de parametros, pero estos fueron los que mejor resultados dieron a la hora de probarlo en tiempo real).
+Posteriormente se descargó el modelo yolov8n\cite{ultralyticsYOLOv8} y para el entrenamiento se realizaron 40 épocas con un tamaño de imagen de 640x640, todo lo demás se dejó en los valores por defecto del modelo (realmente se intentó con diferentes combinaciones de parámetros, pero estos fueron los que mejor resultados dieron a la hora de probarlo en tiempo real).
 
 \subsection{Uso del Modelo}
-Para usar el modelo en el código se agrego un archivo (UI.py) que haciendo uso de una interfaz gráfica en Qt6, carga el modelo entrenado y realiza la detección de los frutos en tiempo real mediante la cámara de la computadora, con algunos parametros que se pueden configurar:
+Para usar el modelo en el código se agregó un archivo (UI.py) que, haciendo uso de una interfaz gráfica en Qt6, carga el modelo entrenado y realiza la detección de los frutos en tiempo real mediante la cámara de la computadora, con algunos parámetros que se pueden configurar:
 
 \begin{itemize}
     \item \textbf{Confianza:} Umbral de confianza para la detección de objetos.
@@ -173,7 +180,7 @@ El análisis cuantitativo revela que el modelo:
 
 
 \subsection{Debilidades del Modelo}
-El modelo es realmente capaz de detectar frutos coloridos, mas no es tan bueno detectando frutos de colores poco vistosos como el verde, de igual manera una de los problemas mas grandes del proyecto es detectar un fruto que se encuentra en la parte trasera al estar girando. Como se puede ver en la figura \ref{fig:real-dec2} el modelo contabiliza nuevamente el fruto que ya habia contado anteriormente, esto debido a que el pino tapa por completo la visibilidad del modelo, por lo que no puede identificar que paso por la parte trasera.
+El modelo es realmente capaz de detectar frutos coloridos, mas no es tan bueno detectando frutos de colores poco vistosos como el verde, de igual manera, uno de los problemas más grandes del proyecto es detectar un fruto que se encuentra en la parte trasera al estar girando. Como se puede ver en la figura \ref{fig:real-dec2} el modelo contabiliza nuevamente el fruto que ya había contado anteriormente, esto debido a que el pino tapa por completo la visibilidad del modelo, por lo que no puede identificar que pasó por la parte trasera.
 
 % UI.png
 \begin{figure}[ht]
@@ -243,7 +250,7 @@ El modelo es realmente capaz de detectar frutos coloridos, mas no es tan bueno d
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\columnwidth]{images/P_curve.png}
-    \caption{Curva de Presición.}
+    \caption{Curva de Precisión.}
     \label{fig:P_curve}
 \end{figure}
 
@@ -259,18 +266,18 @@ El modelo es realmente capaz de detectar frutos coloridos, mas no es tan bueno d
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\columnwidth]{images/PR_curve.png}
-    \caption{Curva de Presición y Recall.}
+    \caption{Curva de Precisión y Recall.}
     \label{fig:PR_curve}
 \end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusión}
-En este trabajo se propuso una solucion al problema de conteo de frutos en tiempo real, utilizando una plataforma giratoria. Se logro implementar un modelo de detección de objetos en tiempo real, que es capaz de detectar frutos en movimiento, sin embargo, el modelo presenta limitaciones en la detección de frutos de colores menos llamativos y en la detección de frutos en posiciones e iluminaciones peculiares, como lo son el fondo de una imagen.
+En este trabajo se propuso una solución al problema de conteo de frutos en tiempo real, utilizando una plataforma giratoria. Se logró implementar un modelo de detección de objetos en tiempo real, que es capaz de detectar frutos en movimiento, sin embargo, el modelo presenta limitaciones en la detección de frutos de colores menos llamativos y en la detección de frutos en posiciones e iluminaciones peculiares, como lo son el fondo de una imagen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\nocite{calcularRangos}
+\nocite{*}
 \addcontentsline{toc}{section}{Referencias} 
 \printbibliography
 %\balance
